@@ -1,6 +1,6 @@
 FROM alpine:3.2
 
-ADD ./bin/apk-install /usr/sbin/apk-install
+ADD bin/apk-install /usr/sbin/apk-install
 RUN chmod +x /usr/sbin/apk-install
 
 RUN apk-install sudo
