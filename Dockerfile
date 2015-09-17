@@ -1,4 +1,5 @@
-FROM alpine:3.2
+FROM       alpine:3.2
+MAINTAINER Michael Sauter <mail@michaelsauter.net>
 
 ADD bin/apk-install /usr/sbin/apk-install
 RUN chmod +x /usr/sbin/apk-install
