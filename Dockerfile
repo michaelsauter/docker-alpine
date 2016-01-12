@@ -15,6 +15,11 @@ RUN adduser -D default;                                               \
     echo "default ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/default; \
     chmod 0440 /etc/sudoers.d/default
 
+ADD bin/dumb-init_1.0.0 /usr/local/bin/dumb-init
+RUN chmod +x /usr/local/bin/dumb-init
+
 ENV     HOME /home/default
 WORKDIR /home/default
 USER    default
+
+ENTRYPOINT ["dumb-init", "--single-child"]
