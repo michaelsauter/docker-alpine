@@ -6,9 +6,6 @@ RUN chmod +x /usr/sbin/apk-install
 
 RUN apk-install sudo
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/main" | sudo tee -a /etc/apk/repositories; \
-    echo "http://dl-4.alpinelinux.org/alpine/edge/community" | sudo tee -a /etc/apk/repositories
-
 RUN adduser -D default;                                               \
     chgrp -R default /usr/local;                                      \
     find /usr/local -type d | xargs chmod g+w;                        \
@@ -22,4 +19,5 @@ ENV     HOME /home/default
 WORKDIR /home/default
 USER    default
 
-ENTRYPOINT ["dumb-init", "--single-child"]
+ENV DUMB_INIT_SETSID 0
+ENTRYPOINT ["dumb-init"]
